@@ -53,7 +53,15 @@ class Snake(object):
         self.turtle_list.append(new_turt)
 
     def collided(self):
-        for i in range(len(self.turtle_list)-1,0,-1):
+        for i in range(len(self.turtle_list)-1, 0, -1):
             if self.head.distance(self.turtle_list[i]) < 14:
                 return True
         return None
+
+    def reset_snake(self):
+        for i in self.turtle_list:
+            i.goto(10000, 10000)
+        self.turtle_list.clear()
+        self.create_snake()
+        self.current_head_value = 0
+        self.head = self.turtle_list[0]
